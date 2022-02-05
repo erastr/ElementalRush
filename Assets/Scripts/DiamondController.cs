@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class DiamondController : MonoBehaviour
 {
@@ -20,27 +21,29 @@ public class DiamondController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(gameObject.name);
+        var otherDiamond = other.GetComponent<DiamondController>();
+
         if (other.CompareTag("Player") && isCollectable)
         {
             StackManager.GetInstance().AddDiamond(this);
             isCollectable = false;
             targetTransform = StackManager.GetInstance().GetLastDiamondTransform();
         }
-        else if (other.CompareTag("Diamond") && isCollectable)
+
+        else if (other.CompareTag("Diamond") && !isCollectable && otherDiamond.isCollectable)
         {
-            isCollectable = false;
-            StackManager.GetInstance().AddDiamond(this);
-            targetTransform = StackManager.GetInstance().GetLastDiamondTransform();
+            otherDiamond.isCollectable = false;
+            StackManager.GetInstance().AddDiamond(otherDiamond);
+            otherDiamond.targetTransform = StackManager.GetInstance().GetLastDiamondTransform();
         }
     }
 
     private void Update()
     {
-        MoveDiamond();
+        FollowDiamond();
     }
 
-    private void MoveDiamond()
+    private void FollowDiamond()
     {
        
         if (isCollectable)
@@ -60,12 +63,41 @@ public class DiamondController : MonoBehaviour
         }
     }
 
+   
+
 
     //Engele çarptýðýmýzda diamond ileriye fýrlayacak
     public void Throw()
     {
-        isCollectable = true;
+        float leftLimitX = -2.5f;
+        float rightLimitX = 2.5f;
+
+        if (transform.position.x <= 0)
+        {
+            leftLimitX = Mathf.Abs(transform.position.x) - 2.5f;
+            rightLimitX -= transform.position.x;
+        }
+        else
+        {
+            rightLimitX = 2.5f - transform.position.x;
+            leftLimitX -= transform.position.x;
+        }
+        GetComponent<Collider>().enabled = false;
+
         targetTransform = null;
+        isCollectable = true;
+
+        var targetPos = new Vector3(Random.Range(leftLimitX, rightLimitX), 0, Random.Range(20, 30));
+
+
+        transform.DOBlendableMoveBy(targetPos, 1);
+        transform.DOBlendableMoveBy(Vector3.up * 1.5f, 0.5f).OnComplete(()=> 
+        {
+            transform.DOBlendableMoveBy(Vector3.up * -1.5f, 0.5f);
+            GetComponent<Collider>().enabled = true;
+        });
+
+        //transform.GetComponent<Rigidbody>().AddForce(Vector3.forward * 15);
     }
 
 }

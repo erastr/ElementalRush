@@ -42,6 +42,7 @@ public class InputController : MonoBehaviour
         var localPos = sideMovementRoot.localPosition;
         
         localPos.x = Mathf.Lerp(localPos.x, sideMovementTarget, Time.deltaTime * sideMovementLerpSpeed);
+
         sideMovementRoot.localPosition = localPos;
     }
 

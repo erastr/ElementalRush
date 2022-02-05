@@ -57,5 +57,56 @@ public class StackManager : MonoBehaviour
 
     }
 
+    public void RemoveDiamondFromList(DiamondController diamond)
+    {
+        var index = diamonds.FindIndex(x => x == diamond);
+
+        var count = diamonds.Count - index;
+
+        var list = diamonds.GetRange(index, count);
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            diamonds.Remove(list[i]);
+
+            if (i==0)
+                Destroy(diamond.gameObject);
+            else
+            {
+                diamonds.Remove(list[i]);
+                list[i].Throw();
+            }
+          
+           
+        }
+
+    }
+
+    public void RemoveAllDiamondFromList()
+    {
+        if (diamonds.Count <= 0)
+            return;
+
+        var list = diamonds.GetRange(0, diamonds.Count);
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            diamonds.Remove(list[i]);
+            list[i].Throw();
+        }
+    }
+
+    public void Throw(DiamondController diamond)
+    {
+        var index = diamonds.FindIndex(x => x == diamond);
+
+        for (int i = index; i < diamonds.Count; i++)
+        {
+           
+            //diamonds[i].Throw();
+            //diamonds.Remove(diamonds[i]);
+        }
+    }
+
 
 }
