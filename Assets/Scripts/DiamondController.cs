@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class DiamondController : MonoBehaviour
 {
-    [SerializeField] private Transform diamondParent;
 
     public Transform targetTransform;
 
@@ -13,10 +12,14 @@ public class DiamondController : MonoBehaviour
 
     public bool isCollectable = true;
 
+    [SerializeField] private float rotateDuration = 1;
+
+    public DiamondCategory category;
 
     private void Start()
     {
         distance = StackManager.GetInstance().distance;
+        transform.DOLocalRotate(Vector3.up * 360, rotateDuration, RotateMode.FastBeyond360).SetLoops(-1,LoopType.Incremental).SetEase(Ease.Linear);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -100,4 +103,14 @@ public class DiamondController : MonoBehaviour
         //transform.GetComponent<Rigidbody>().AddForce(Vector3.forward * 15);
     }
 
+
+
+
+}
+
+public enum DiamondCategory
+{
+    Fire = 0,
+    Water = 1,
+    Earth = 2
 }

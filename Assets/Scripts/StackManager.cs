@@ -57,6 +57,30 @@ public class StackManager : MonoBehaviour
 
     }
 
+    public void PayGateCost(DiamondController dia)
+    {
+        var diamond = diamonds.Find(x => x == dia);
+
+        diamond.GetComponent<Collider>().enabled = false;
+
+        diamonds.Remove(diamond);
+
+        Destroy(diamond.gameObject);
+
+        for (int i = 0; i < diamonds.Count; i++)
+        {
+            if (i==0)
+                diamonds[i].targetTransform = firstDiamondTransform;
+            else
+                diamonds[i].targetTransform = diamonds[i - 1].transform;
+
+        }
+
+        
+
+ 
+    }
+
     public void RemoveDiamondFromList(DiamondController diamond)
     {
         var index = diamonds.FindIndex(x => x == diamond);

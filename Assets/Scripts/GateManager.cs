@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GateManager : MonoBehaviour
 {
-    private GateType currentGateType;
 
+    [SerializeField] List<GateController> gateControllers = new List<GateController>();
 
     #region Singleton
 
@@ -34,24 +34,11 @@ public class GateManager : MonoBehaviour
 
 
 
-    public void SetGateType(GateType type)
-    {
-        currentGateType = type;
+   
 
-        switch (currentGateType)
-        {
-            case GateType.waterGate:
-                Debug.Log("SelectedWaterGate");
-                break;
-            case GateType.fireGate:
-                Debug.Log("SelectedFireGate");
-                break;
-            case GateType.earthGate:
-                Debug.Log("SelectedEarthGate");
-                break;
-        }
 
-    }
+
+
 
 
 }
