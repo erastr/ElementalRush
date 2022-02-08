@@ -56,7 +56,7 @@ public class DiamondController : MonoBehaviour
         {
             var targetPos = targetTransform.transform.position + Vector3.forward * distance;
 
-            var targetX = Mathf.Lerp(transform.position.x, targetTransform.transform.position.x, 0.09f);
+            var targetX = Mathf.Lerp(transform.position.x, targetTransform.transform.position.x, 0.13f);
 
             var pos = targetPos;
 
@@ -69,7 +69,7 @@ public class DiamondController : MonoBehaviour
    
 
 
-    //Engele çarptýðýmýzda diamond ileriye fýrlayacak
+    //Engele ï¿½arptï¿½ï¿½ï¿½mï¿½zda diamond ileriye fï¿½rlayacak
     public void Throw()
     {
         float leftLimitX = -2.5f;
@@ -90,7 +90,7 @@ public class DiamondController : MonoBehaviour
         targetTransform = null;
         isCollectable = true;
 
-        var targetPos = new Vector3(Random.Range(leftLimitX, rightLimitX), 0, Random.Range(20, 30));
+        var targetPos = new Vector3(Random.Range(leftLimitX, rightLimitX), 0, Random.Range(10, 20));
 
 
         transform.DOBlendableMoveBy(targetPos, 1);

@@ -75,10 +75,6 @@ public class StackManager : MonoBehaviour
                 diamonds[i].targetTransform = diamonds[i - 1].transform;
 
         }
-
-        
-
- 
     }
 
     public void RemoveDiamondFromList(DiamondController diamond)
