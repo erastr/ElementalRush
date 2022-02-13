@@ -62,6 +62,7 @@ public class UIManager : MonoBehaviour
     {
         coinTMP.text = "0";
         inGameCoinTMP.text = "0";
+        inGameCoinTMP.enabled = true;
         isPlaying = true;
         tapToPlayPanel.SetActive(false);
         tapToPlayText.gameObject.SetActive(false);
@@ -72,6 +73,7 @@ public class UIManager : MonoBehaviour
 
     public void EndGame()
     {
+        inGameCoinTMP.enabled = false;
         endGamePanel.SetActive(true);
     }
 
