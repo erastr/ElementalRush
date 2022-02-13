@@ -22,6 +22,7 @@ public class DiamondController : MonoBehaviour
         transform.DOLocalRotate(Vector3.up * 360, rotateDuration, RotateMode.FastBeyond360).SetLoops(-1,LoopType.Incremental).SetEase(Ease.Linear);
     }
 
+    //The method that detects what hits the collider of the object and acts accordingly
     private void OnTriggerEnter(Collider other)
     {
         var otherDiamond = other.GetComponent<DiamondController>();
@@ -51,6 +52,7 @@ public class DiamondController : MonoBehaviour
         FollowDiamond();
     }
 
+    //The method in which coins follow each other with a delay
     private void FollowDiamond()
     {
        
@@ -74,7 +76,7 @@ public class DiamondController : MonoBehaviour
    
 
 
-    //Engele �arpt���m�zda diamond ileriye f�rlayacak
+    //The method that makes the coins jump forward when they hit an obstacle.
     public void Throw()
     {
         float leftLimitX = -2.5f;
@@ -108,7 +110,7 @@ public class DiamondController : MonoBehaviour
         //transform.GetComponent<Rigidbody>().AddForce(Vector3.forward * 15);
     }
 
-
+    //The method where we specify what to do when the object disappears
     private void OnDestroy()
     {
         transform.DOKill();

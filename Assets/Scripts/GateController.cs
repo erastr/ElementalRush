@@ -19,6 +19,7 @@ public class GateController : MonoBehaviour
         costText.text = cost.ToString();
     }
 
+    //The method that detects what hits the collider of the object and acts accordingly
     private void OnTriggerEnter(Collider other)
     {
 

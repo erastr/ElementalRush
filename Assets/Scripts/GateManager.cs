@@ -9,7 +9,7 @@ public class GateManager : MonoBehaviour
 
     #region Singleton
 
-
+    
     private static GateManager instance;
 
     private void Awake()

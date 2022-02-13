@@ -6,7 +6,7 @@ using DG.Tweening;
 public class ObstacleController : MonoBehaviour
 {
 
-
+    //The method that detects what hits the collider of the object and acts accordingly
     private void OnTriggerEnter(Collider other)
     {
         if (Equals(other.tag,"Player"))

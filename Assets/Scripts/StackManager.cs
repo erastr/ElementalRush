@@ -38,7 +38,7 @@ public class StackManager : MonoBehaviour
 
     public Transform firstDiamondTransform;
 
-
+    //We add coins to the stack list and the method we give the position of the object that this coin should follow
     public void AddDiamond(DiamondController diamond)
     {
         diamonds.Add(diamond);
@@ -48,6 +48,7 @@ public class StackManager : MonoBehaviour
 
     }
 
+    //The method where we give the position of the last coin in the list
     public Transform GetLastDiamondTransform()
     {
         if (diamonds.Count <= 1)
@@ -57,6 +58,7 @@ public class StackManager : MonoBehaviour
 
     }
 
+    //The method by which the fee for the gate passed is paid
     public void PayGateCost(DiamondController dia)
     {
         var diamond = diamonds.Find(x => x == dia);
@@ -77,6 +79,7 @@ public class StackManager : MonoBehaviour
         }
     }
 
+    //The method in which the incoming coin is deleted from the list
     public void RemoveDiamondFromList(DiamondController diamond)
     {
         var index = diamonds.FindIndex(x => x == diamond);
@@ -101,7 +104,7 @@ public class StackManager : MonoBehaviour
         }
 
     }
-
+    //Method to delete all coins from list
     public void RemoveAllDiamondFromList()
     {
         if (diamonds.Count <= 0)
@@ -116,6 +119,7 @@ public class StackManager : MonoBehaviour
         }
     }
 
+    //Method that destroys all coins
     public void DestroyAllDiamond()
     {
         if (diamonds.Count <= 0)
@@ -132,6 +136,7 @@ public class StackManager : MonoBehaviour
         }
     }
 
+    //The method where we throw the incoming coin forward
     public void Throw(DiamondController diamond)
     {
         var index = diamonds.FindIndex(x => x == diamond);

@@ -64,6 +64,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //Method that starts the game
     private void StartGame()
     {
         startCam.Priority = 0;
@@ -78,17 +79,20 @@ public class UIManager : MonoBehaviour
         player.ChangeAnimation("Run");
     }
 
+    //The method that works at the end of the game
     public void EndGame()
     {
         inGameCoinTMP.enabled = false;
         endGamePanel.SetActive(true);
     }
 
+    //The method that takes us to the next level
     public void NextGameButton(int level)
     {
         SceneManager.LoadScene(level);
     }
 
+    //The method where we increase the number of gold collected by the user and update the text on the screen
     public void UpdateCoin()
     {
         coin++;

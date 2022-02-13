@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6267852412181002181}
   - component: {fileID: 9167699285333581214}
   m_Layer: 0
-  m_Name: Gate
+  m_Name: OriginalGate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

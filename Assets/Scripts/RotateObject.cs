@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class RotateObject : MonoBehaviour
 {
+    //The method that allows us to rotate the desired object in the desired direction.
     [SerializeField] private float rotateDuration = 0.5f;
     [SerializeField] private RotateType rotateType;
 

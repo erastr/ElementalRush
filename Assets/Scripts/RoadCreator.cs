@@ -16,6 +16,7 @@ public class RoadCreator : MonoBehaviour
 
     [SerializeField] private List<GameObject> roadList = new List<GameObject>();
 
+    //Path generating method
 #if UNITY_EDITOR
     [Button]
     public void CreateRoad()
@@ -44,6 +45,7 @@ public class RoadCreator : MonoBehaviour
     }
 #endif
 
+//The method that deletes the last path
 #if UNITY_EDITOR
     [Button]
     public void RemoveLastRoad()
@@ -57,6 +59,7 @@ public class RoadCreator : MonoBehaviour
     }
 #endif
 
+//Method that deletes all paths
 #if UNITY_EDITOR
     [Button]
     public void DestroyAllRoad()

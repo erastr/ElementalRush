@@ -39,6 +39,7 @@ public class InputController : MonoBehaviour
         }
     }
 
+    //The method in which we move the player to the right and left
     private void HandleSideMovement()
     {
         sideMovementTarget += inputDrag.x * sideMovementSensitivity;
@@ -51,6 +52,7 @@ public class InputController : MonoBehaviour
         sideMovementRoot.localPosition = localPos;
     }
 
+    //Required method for the handle side movement method to work
     private void HandleInput()
     {
         if (Input.GetMouseButtonDown(0))

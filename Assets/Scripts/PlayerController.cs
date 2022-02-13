@@ -16,12 +16,13 @@ public class PlayerController : MonoBehaviour
     public InputController inputController;
 
     
-  
+    //The method where we change the character animation.    
     public void ChangeAnimation(string animationName)
     {
         animator.Play(animationName);
     }
 
+    //The method we set what your character will do when the game is over.
     private void FinishGame()
     {
         canMove = false;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
         UIManager.GetInstance().EndGame();
     }
 
-
+    //The method that detects what hits the collider of the object and acts accordingly
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Finish"))
