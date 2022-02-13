@@ -61,7 +61,7 @@ public class DiamondController : MonoBehaviour
         {
             var targetPos = targetTransform.transform.position + Vector3.forward * distance;
 
-            var targetX = Mathf.Lerp(transform.position.x, targetTransform.transform.position.x, 0.06f);
+            var targetX = Mathf.Lerp(transform.position.x, targetTransform.transform.position.x, 0.22f);
 
             var pos = targetPos;
 
