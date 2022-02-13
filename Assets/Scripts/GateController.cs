@@ -50,6 +50,7 @@ public class GateController : MonoBehaviour
         {
             PlayerController player = other.GetComponent<PlayerController>();
             player.rootTransform.DOBlendableLocalMoveBy(Vector3.back * 10, 0.5f);
+            StackManager.GetInstance().DestroyAllDiamond();
             Destroy(gameObject);
         }
 

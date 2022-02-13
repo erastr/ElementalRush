@@ -7,6 +7,7 @@ public class RoadCreator : MonoBehaviour
 {
     [SerializeField] private GameObject roadPrefab;
     [SerializeField] private GameObject road2Prefab;
+    [SerializeField] private GameObject finishRoadPrefab;
     [SerializeField] private Transform roadParent;
 
     [SerializeField] private float distance;
@@ -21,11 +22,10 @@ public class RoadCreator : MonoBehaviour
     {
         float posZ = 0;
 
+        GameObject road;
+
         for (int i = 0; i < roadCount; i++)
         {
-
-            GameObject road;
-            
 
             if (i % 2 == 0)
                 road = Instantiate(roadPrefab, new Vector3(0, 0, posZ), Quaternion.identity, roadParent);
@@ -36,6 +36,11 @@ public class RoadCreator : MonoBehaviour
             roadList.Add(road);
 
         }
+
+        road = Instantiate(finishRoadPrefab, new Vector3(0, 0, posZ), Quaternion.identity, roadParent);
+
+        posZ += distance;
+        roadList.Add(road);
     }
 #endif
 

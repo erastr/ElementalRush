@@ -15,6 +15,8 @@ public class InputController : MonoBehaviour
     private Vector2 inputDrag;
     private Vector2 inputStartPosition;
 
+    public bool canMove = false;
+
 
     private Vector2 mousePosCM
     {
@@ -30,8 +32,11 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-        HandleSideMovement();
-        HandleInput();
+        if (canMove)
+        {
+            HandleSideMovement();
+            HandleInput();
+        }
     }
 
     private void HandleSideMovement()

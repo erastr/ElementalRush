@@ -116,6 +116,22 @@ public class StackManager : MonoBehaviour
         }
     }
 
+    public void DestroyAllDiamond()
+    {
+        if (diamonds.Count <= 0)
+            return;
+
+        var list = diamonds.GetRange(0, diamonds.Count);
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            GameObject go = list[i].gameObject;
+            diamonds.Remove(list[i]);
+            Destroy(go);
+            
+        }
+    }
+
     public void Throw(DiamondController diamond)
     {
         var index = diamonds.FindIndex(x => x == diamond);

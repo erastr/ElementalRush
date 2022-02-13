@@ -39,6 +39,10 @@ public class DiamondController : MonoBehaviour
             StackManager.GetInstance().AddDiamond(otherDiamond);
             otherDiamond.targetTransform = StackManager.GetInstance().GetLastDiamondTransform();
         }
+        else if (other.CompareTag("Chest"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Update()
@@ -56,7 +60,7 @@ public class DiamondController : MonoBehaviour
         {
             var targetPos = targetTransform.transform.position + Vector3.forward * distance;
 
-            var targetX = Mathf.Lerp(transform.position.x, targetTransform.transform.position.x, 0.13f);
+            var targetX = Mathf.Lerp(transform.position.x, targetTransform.transform.position.x, 0.03f);
 
             var pos = targetPos;
 
@@ -104,6 +108,10 @@ public class DiamondController : MonoBehaviour
     }
 
 
+    private void OnDestroy()
+    {
+        transform.DOKill();
+    }
 
 
 }
