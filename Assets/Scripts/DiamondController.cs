@@ -42,7 +42,6 @@ public class DiamondController : MonoBehaviour
         else if (other.CompareTag("Chest"))
         {
             Destroy(gameObject);
-            UIManager.GetInstance().UpdateCoin();
         }
     }
 
@@ -61,7 +60,7 @@ public class DiamondController : MonoBehaviour
         {
             var targetPos = targetTransform.transform.position + Vector3.forward * distance;
 
-            var targetX = Mathf.Lerp(transform.position.x, targetTransform.transform.position.x, 0.06f);
+            var targetX = Mathf.Lerp(transform.position.x, targetTransform.transform.position.x, 0.03f);
 
             var pos = targetPos;
 

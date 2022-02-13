@@ -24,10 +24,6 @@ public class GateController : MonoBehaviour
 
         if (other.CompareTag("Diamond"))
         {
-            if (other.gameObject.GetComponent<DiamondController>().isCollectable)
-            {
-                return;
-            }
             List<DiamondController> diamondList = StackManager.GetInstance().diamonds;
 
             for (int i = diamondList.Count-1; i >= 0; i--)
