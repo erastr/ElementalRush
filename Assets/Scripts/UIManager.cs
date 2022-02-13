@@ -35,7 +35,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tapToPlayText;
     [SerializeField] private GameObject tapToPlayPanel;
     [SerializeField] private GameObject endGamePanel;
-
+    [SerializeField] private TextMeshProUGUI coinTMP;
+    [SerializeField] private TextMeshPro inGameCoinTMP;
+    private int coin;
     [SerializeField] private PlayerController player;
 
     
@@ -58,6 +60,8 @@ public class UIManager : MonoBehaviour
 
     private void StartGame()
     {
+        coinTMP.text = "0";
+        inGameCoinTMP.text = "0";
         isPlaying = true;
         tapToPlayPanel.SetActive(false);
         tapToPlayText.gameObject.SetActive(false);
@@ -74,6 +78,13 @@ public class UIManager : MonoBehaviour
     public void NextGameButton(int level)
     {
         SceneManager.LoadScene(level);
+    }
+
+    public void UpdateCoin()
+    {
+        coin++;
+        coinTMP.text = coin.ToString();
+        inGameCoinTMP.text = coin.ToString();
     }
 
 }
