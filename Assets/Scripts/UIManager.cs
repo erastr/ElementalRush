@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class UIManager : MonoBehaviour
 {
@@ -37,15 +38,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject endGamePanel;
     [SerializeField] private TextMeshProUGUI coinTMP;
     [SerializeField] private TextMeshPro inGameCoinTMP;
-    private int coin;
     [SerializeField] private PlayerController player;
 
-    
+
+    [SerializeField] private CinemachineVirtualCamera startCam;
+
+
+    private int coin;
+
     private bool isPlaying = false;
 
     public void Start()
     {
         tapToPlayText.DOFade(1, 1f).SetLoops(-1,LoopType.Yoyo);
+        
     }
 
 
@@ -60,6 +66,7 @@ public class UIManager : MonoBehaviour
 
     private void StartGame()
     {
+        startCam.Priority = 0;
         coinTMP.text = "0";
         inGameCoinTMP.text = "0";
         inGameCoinTMP.enabled = true;
